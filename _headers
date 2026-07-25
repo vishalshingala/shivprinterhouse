@@ -1,0 +1,63 @@
+# Security and caching headers.
+# Read natively by Netlify and Cloudflare Pages — no configuration needed.
+# For nginx, Apache or S3 + CloudFront, see docs/SECURITY.md for the same
+# policy expressed in those formats.
+#
+# The CSP below is strict on purpose: the site loads no third-party scripts,
+# styles, fonts or images. The single exception is frame-src, which allows the
+# Google Maps iframe on the Contact page — and that iframe is only injected
+# after the visitor clicks "Load the map".
+#
+# If you ever add a third-party resource, this file is the gate you must open,
+# and you should ask whether it is worth the privacy and performance cost.
+
+/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; media-src 'self'; frame-src https://www.google.com; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), fullscreen=(self), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), screen-wake-lock=(), usb=(), xr-spatial-tracking=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  X-Permitted-Cross-Domain-Policies: none
+
+# HTML is revalidated on every request so content edits go live immediately.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# CSS and JS are NOT content-hashed (there is no build step), so they cannot be
+# cached immutably. One day, with revalidation. If you need an edit to appear
+# instantly, bump the ?v= query string on the <link> and <script> tags.
+/assets/css/*
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/assets/js/*
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# Images, icons and fonts change rarely.
+/assets/images/*
+  Cache-Control: public, max-age=604800
+
+/assets/icons/*
+  Cache-Control: public, max-age=604800
+
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/favicon.ico
+  Cache-Control: public, max-age=604800
+
+/manifest.webmanifest
+  Cache-Control: public, max-age=86400
+  Content-Type: application/manifest+json; charset=utf-8
+
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+  Content-Type: application/xml; charset=utf-8
+
+/robots.txt
+  Cache-Control: public, max-age=86400

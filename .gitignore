@@ -1,0 +1,22 @@
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Local preview / tooling artefacts
+.cache/
+node_modules/
+*.log
+
+# Netlify / Cloudflare local state
+.netlify/
+.wrangler/
+
+# There is no build step: nothing in this repo is generated at deploy time.
+# The HTML, CSS, JS and assets are all source and must stay tracked.

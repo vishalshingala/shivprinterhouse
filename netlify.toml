@@ -1,0 +1,27 @@
+# Netlify configuration.
+# There is no build step — the repository root IS the deployable site.
+# Security and cache headers live in `_headers` so that the same file also
+# works unchanged on Cloudflare Pages.
+
+[build]
+  publish = "."
+  command = ""
+
+[build.processing]
+  skip_processing = true
+
+# Serve /about instead of /about/ consistently and drop any .html suffix.
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+# Canonical host. Enable this once the domain is live and you have decided
+# between the www and apex form. Keep it consistent with the canonical URLs in
+# the HTML, the sitemap and robots.txt.
+# [[redirects]]
+#   from = "https://shivprinterhouse.com/*"
+#   to = "https://www.shivprinterhouse.com/:splat"
+#   status = 301
+#   force = true

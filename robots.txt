@@ -1,0 +1,8 @@
+# robots.txt for Shiv Printer House
+# CONFIG domain: update the Sitemap line if the final domain differs.
+
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+Sitemap: https://www.shivprinterhouse.com/sitemap.xml

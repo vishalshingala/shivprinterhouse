@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Shiv Printer House">
+  <title>Shiv Printer House</title>
+  <!-- Sheet feeding out of the printer, printed with a CMYK test strip -->
+  <rect x="13" y="4" width="22" height="19" rx="2" fill="#ffffff" stroke="#10457e" stroke-width="2"/>
+  <g>
+    <rect x="17" y="9"  width="14" height="2" rx="1" fill="#00a3c4"/>
+    <rect x="17" y="13" width="14" height="2" rx="1" fill="#d6246e"/>
+    <rect x="17" y="17" width="9"  height="2" rx="1" fill="#f5b100"/>
+  </g>
+  <!-- Printer body -->
+  <path d="M8 21h32a4 4 0 0 1 4 4v11a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V25a4 4 0 0 1 4-4Z" fill="#10457e"/>
+  <!-- Output slot -->
+  <rect x="13" y="29" width="22" height="7" rx="1.5" fill="#ffffff"/>
+  <!-- Status light -->
+  <circle cx="38.5" cy="26" r="1.6" fill="#f5b100"/>
+</svg>

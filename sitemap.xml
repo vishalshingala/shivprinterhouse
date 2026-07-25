@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  CONFIG domain: every <loc> below uses https://www.shivprinterhouse.com.
+  If the final domain differs, update this file, robots.txt, and the
+  <link rel="canonical"> plus og:url tags in each HTML page.
+  Update <lastmod> when a page's content meaningfully changes.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.shivprinterhouse.com/</loc>
+    <lastmod>2026-07-25</lastmod>
+  </url>
+  <url>
+    <loc>https://www.shivprinterhouse.com/printer-sales/</loc>
+    <lastmod>2026-07-25</lastmod>
+  </url>
+  <url>
+    <loc>https://www.shivprinterhouse.com/services/</loc>
+    <lastmod>2026-07-25</lastmod>
+  </url>
+  <url>
+    <loc>https://www.shivprinterhouse.com/products/</loc>
+    <lastmod>2026-07-25</lastmod>
+  </url>
+  <url>
+    <loc>https://www.shivprinterhouse.com/cartridge-refilling/</loc>
+    <lastmod>2026-07-25</lastmod>
+  </url>
+  <url>
+    <loc>https://www.shivprinterhouse.com/wholesale/</loc>
+    <lastmod>2026-07-25</lastmod>
+  </url>
+  <url>
+    <loc>https://www.shivprinterhouse.com/brands/</loc>
+    <lastmod>2026-07-25</lastmod>
+  </url>
+  <url>
+    <loc>https://www.shivprinterhouse.com/about/</loc>
+    <lastmod>2026-07-25</lastmod>
+  </url>
+  <url>
+    <loc>https://www.shivprinterhouse.com/contact/</loc>
+    <lastmod>2026-07-25</lastmod>
+  </url>
+  <url>
+    <loc>https://www.shivprinterhouse.com/privacy/</loc>
+    <lastmod>2026-07-25</lastmod>
+  </url>
+  <url>
+    <loc>https://www.shivprinterhouse.com/terms/</loc>
+    <lastmod>2026-07-25</lastmod>
+  </url>
+</urlset>
