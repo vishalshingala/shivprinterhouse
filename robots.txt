@@ -5,4 +5,10 @@ User-agent: *
 Allow: /
 Disallow: /404.html
 
+# There is no build step, so repository documentation is served alongside the
+# site. It is not secret (the repo is public) but it should not appear in search
+# results for the business. Also enforced via X-Robots-Tag in _headers.
+Disallow: /docs/
+Disallow: /*.md$
+
 Sitemap: https://shivprinterhouse.com/sitemap.xml

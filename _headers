@@ -22,6 +22,16 @@
   Cross-Origin-Resource-Policy: same-origin
   X-Permitted-Cross-Domain-Policies: none
 
+# Repository documentation is deployed along with the site because there is no
+# build step to exclude it. Keep it out of search indexes.
+/*.md
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: public, max-age=3600
+
+/docs/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: public, max-age=3600
+
 # HTML is revalidated on every request so content edits go live immediately.
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
