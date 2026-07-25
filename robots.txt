@@ -5,4 +5,4 @@ User-agent: *
 Allow: /
 Disallow: /404.html
 
-Sitemap: https://www.shivprinterhouse.com/sitemap.xml
+Sitemap: https://shivprinterhouse.com/sitemap.xml

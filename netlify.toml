@@ -17,11 +17,12 @@
   status = 301
   force = true
 
-# Canonical host. Enable this once the domain is live and you have decided
-# between the www and apex form. Keep it consistent with the canonical URLs in
-# the HTML, the sitemap and robots.txt.
+# Canonical host is the apex, shivprinterhouse.com — matching the canonical
+# URLs in the HTML, sitemap.xml and robots.txt. Redirect www to it.
+# Only needed if you deploy to Netlify; on Cloudflare Pages add both domains to
+# the project and set the www -> apex redirect there instead.
 # [[redirects]]
-#   from = "https://shivprinterhouse.com/*"
-#   to = "https://www.shivprinterhouse.com/:splat"
+#   from = "https://www.shivprinterhouse.com/*"
+#   to = "https://shivprinterhouse.com/:splat"
 #   status = 301
 #   force = true

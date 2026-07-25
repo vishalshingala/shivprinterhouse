@@ -23,23 +23,27 @@ grep -rln "24XXXXXXXXXXXZX" .          # footer of all 12 pages, contact/, terms
 sed -i 's/24XXXXXXXXXXXZX/YOUR_REAL_GSTIN/g' *.html */index.html
 ```
 
-## 2. Domain
+## 2. Domain — ✅ done
 
-**Current:** `https://www.shivprinterhouse.com`
+**Set to `https://shivprinterhouse.com`** (apex, no `www`), confirmed as the
+registered domain. Used consistently in `<link rel="canonical">`, `og:url`,
+`twitter:*`, the JSON-LD `@id` values, `sitemap.xml` and `robots.txt`.
 
-Used in `<link rel="canonical">`, `og:url`, `twitter:*`, the JSON-LD `@id`
-values, `sitemap.xml` and `robots.txt`. These must all agree, and must match the
-host visitors actually reach — a canonical pointing at a domain that 301s
-elsewhere causes indexing problems.
+Remaining task: **301 `www` to the apex**, so both forms resolve but only one is
+canonical. On Cloudflare Pages, add both `shivprinterhouse.com` and
+`www.shivprinterhouse.com` to the Pages project, then add a redirect rule
+sending `www` to the apex. Leaving `www` unresolvable (as it is now) is also
+acceptable, just less forgiving of people who type it.
+
+If the domain ever changes:
 
 ```bash
-grep -rl "www.shivprinterhouse.com" . | grep -v docs/
-sed -i 's|https://www.shivprinterhouse.com|https://yourdomain.com|g' \
+sed -i 's|https://shivprinterhouse.com|https://newdomain.com|g' \
   *.html */index.html sitemap.xml robots.txt
 ```
 
-Then pick **one** of `www.` or apex and 301 the other to it (see the commented
-redirect block in `netlify.toml`).
+All of these must agree, and must match the host visitors actually reach — a
+canonical pointing at a domain that 301s elsewhere causes indexing problems.
 
 ## 3. Email address
 

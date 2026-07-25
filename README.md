@@ -16,7 +16,7 @@ marked in the source with an `<!-- CONFIG ... -->` comment.
 | # | What | Current placeholder | Where |
 |---|------|--------------------|-------|
 | 1 | **GSTIN** | `24XXXXXXXXXXXZX` (a template, not a real number) | footer of every page, `contact/`, `terms/` |
-| 2 | **Domain** | `https://www.shivprinterhouse.com` | canonical + `og:url` in all pages, `sitemap.xml`, `robots.txt` |
+| 2 | ~~Domain~~ | ✅ **set to `https://shivprinterhouse.com`** (apex) | canonical + `og:url` in all pages, `sitemap.xml`, `robots.txt` |
 | 3 | **Email** | `info@shivprinterhouse.com` | footer, `contact/`, `privacy/`, `terms/` |
 | 4 | **Business hours** | Mon–Sat 10:00–19:30, Sun closed | footer, `contact/`, `about/`, JSON-LD on `index.html` + `contact/` |
 | 5 | **Social profiles** | suggested handles — **may not exist yet** | footer of every page, `sameAs` in `index.html` JSON-LD |
