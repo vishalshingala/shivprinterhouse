@@ -1,0 +1,15 @@
+{
+  "_README": [
+    "Optional captions for gallery photos. You can delete this _README key.",
+    "Key = the exact filename you placed in assets/images/gallery/originals/",
+    "  alt     = description for screen readers and search engines. Write a real one.",
+    "  caption = text shown under the photo. Omit for none.",
+    "  group   = section heading it appears under.",
+    "  order   = lower numbers appear first. Default 9999.",
+    "Groups render in this order: Our shop, Workshop & repairs, Spare parts & stock,",
+    "Printers we supply, Our team, Photos. Any other name works and is appended.",
+    "Example once you add shopfront.jpg:",
+    "  \"shopfront.jpg\": {\"alt\": \"Shiv Printer House shopfront on Gondal Road, Rajkot\",",
+    "   \"caption\": \"Our shop on Gondal Road\", \"group\": \"Our shop\", \"order\": 1}"
+  ]
+}

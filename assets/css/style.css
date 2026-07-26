@@ -23,8 +23,20 @@
   --text:         #131920;
   --text-muted:   #545f6d;
   --border:       #dde5ef;
-  --shadow:       0 1px 2px rgb(16 33 56 / 6%), 0 4px 12px rgb(16 33 56 / 6%);
-  --shadow-lg:    0 2px 4px rgb(16 33 56 / 6%), 0 12px 32px rgb(16 33 56 / 10%);
+  /* Layered shadows — several soft steps read as real depth where one hard
+     shadow reads as a 2010-era box. */
+  --shadow-sm:    0 1px 2px rgb(16 33 56 / 5%);
+  --shadow:       0 1px 2px rgb(16 33 56 / 5%), 0 2px 6px rgb(16 33 56 / 5%),
+                  0 8px 20px -6px rgb(16 33 56 / 8%);
+  --shadow-lg:    0 1px 2px rgb(16 33 56 / 5%), 0 4px 12px rgb(16 33 56 / 6%),
+                  0 18px 44px -10px rgb(16 33 56 / 14%);
+  --shadow-xl:    0 2px 4px rgb(16 33 56 / 6%), 0 12px 28px rgb(16 33 56 / 10%),
+                  0 40px 80px -20px rgb(16 33 56 / 22%);
+  /* Brand-tinted glow for elements that should feel lit rather than dropped */
+  --glow:         0 10px 30px -8px rgb(16 69 126 / 32%);
+
+  --surface-3:    #dfe8f4;
+  --ring:         rgb(16 69 126 / 10%);
 
   /* Feedback */
   --success:      #0d7a4f;
@@ -42,8 +54,16 @@
   --fs-base: 1rem;
   --fs-lg:   clamp(1.0625rem, 0.4vw + 0.97rem, 1.1875rem);
   --fs-xl:   clamp(1.25rem, 0.6vw + 1.1rem, 1.5rem);
-  --fs-2xl:  clamp(1.5rem, 1.2vw + 1.2rem, 2rem);
-  --fs-3xl:  clamp(1.875rem, 2.2vw + 1.35rem, 2.75rem);
+  --fs-2xl:  clamp(1.5rem, 1.2vw + 1.2rem, 2.125rem);
+  --fs-3xl:  clamp(2rem, 2.6vw + 1.4rem, 3rem);
+  --fs-4xl:  clamp(2.5rem, 5vw + 1rem, 4.25rem);   /* hero display only */
+
+  /* Motion. Every transition references these so the whole site shares a feel. */
+  --ease:      cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast:  120ms;
+  --dur:       220ms;
+  --dur-slow:  520ms;
 
   /* Spacing scale */
   --sp-1: 0.25rem;
@@ -57,9 +77,10 @@
   --sp-9: 6rem;
 
   /* Radii + layout */
-  --r-sm: 6px;
-  --r:    10px;
-  --r-lg: 16px;
+  --r-sm: 8px;
+  --r:    14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
   --r-pill: 999px;
   --container: 72rem;
   --header-h: 4rem;
@@ -78,8 +99,16 @@
     --text:       #e7edf5;
     --text-muted: #9aa7b8;
     --border:     #27303c;
-    --shadow:     0 1px 2px rgb(0 0 0 / 40%), 0 4px 12px rgb(0 0 0 / 30%);
-    --shadow-lg:  0 2px 4px rgb(0 0 0 / 40%), 0 12px 32px rgb(0 0 0 / 45%);
+    --surface-3:  #27313f;
+    --ring:       rgb(255 255 255 / 8%);
+    --shadow-sm:  0 1px 2px rgb(0 0 0 / 40%);
+    --shadow:     0 1px 2px rgb(0 0 0 / 40%), 0 2px 6px rgb(0 0 0 / 30%),
+                  0 8px 20px -6px rgb(0 0 0 / 40%);
+    --shadow-lg:  0 1px 2px rgb(0 0 0 / 45%), 0 4px 12px rgb(0 0 0 / 35%),
+                  0 18px 44px -10px rgb(0 0 0 / 55%);
+    --shadow-xl:  0 2px 4px rgb(0 0 0 / 50%), 0 12px 28px rgb(0 0 0 / 45%),
+                  0 40px 80px -20px rgb(0 0 0 / 65%);
+    --glow:       0 10px 30px -8px rgb(106 169 233 / 26%);
     --success:    #4ade9f;
     --success-bg: #10291f;
   }
@@ -95,8 +124,16 @@
   --text:       #e7edf5;
   --text-muted: #9aa7b8;
   --border:     #27303c;
-  --shadow:     0 1px 2px rgb(0 0 0 / 40%), 0 4px 12px rgb(0 0 0 / 30%);
-  --shadow-lg:  0 2px 4px rgb(0 0 0 / 40%), 0 12px 32px rgb(0 0 0 / 45%);
+  --surface-3:  #27313f;
+  --ring:       rgb(255 255 255 / 8%);
+  --shadow-sm:  0 1px 2px rgb(0 0 0 / 40%);
+  --shadow:     0 1px 2px rgb(0 0 0 / 40%), 0 2px 6px rgb(0 0 0 / 30%),
+                0 8px 20px -6px rgb(0 0 0 / 40%);
+  --shadow-lg:  0 1px 2px rgb(0 0 0 / 45%), 0 4px 12px rgb(0 0 0 / 35%),
+                0 18px 44px -10px rgb(0 0 0 / 55%);
+  --shadow-xl:  0 2px 4px rgb(0 0 0 / 50%), 0 12px 28px rgb(0 0 0 / 45%),
+                0 40px 80px -20px rgb(0 0 0 / 65%);
+  --glow:       0 10px 30px -8px rgb(106 169 233 / 26%);
   --success:    #4ade9f;
   --success-bg: #10291f;
 }
@@ -138,10 +175,10 @@ h1, h2, h3, h4 {
   text-wrap: balance;
 }
 
-h1 { font-size: var(--fs-3xl); }
-h2 { font-size: var(--fs-2xl); }
-h3 { font-size: var(--fs-xl); }
-h4 { font-size: var(--fs-lg); }
+h1 { font-size: var(--fs-3xl); letter-spacing: -0.032em; line-height: 1.08; }
+h2 { font-size: var(--fs-2xl); letter-spacing: -0.028em; line-height: 1.14; }
+h3 { font-size: var(--fs-xl);  letter-spacing: -0.02em; }
+h4 { font-size: var(--fs-lg);  letter-spacing: -0.015em; }
 
 p, ul, ol, dl, table, figure, blockquote { margin: 0 0 var(--sp-4); }
 p { text-wrap: pretty; }
@@ -219,7 +256,9 @@ section { padding-block: var(--sp-7); }
 .section-head p { color: var(--text-muted); font-size: var(--fs-lg); margin-bottom: 0; }
 
 .eyebrow {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
   font-size: var(--fs-xs);
   font-weight: 700;
   letter-spacing: 0.09em;
@@ -447,9 +486,11 @@ section { padding-block: var(--sp-7); }
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.15s ease, transform 0.1s ease;
+  transition: background-color var(--dur) var(--ease),
+              transform var(--dur-fast) var(--ease),
+              box-shadow var(--dur) var(--ease);
 }
-.btn:hover { background: var(--brand-hover); color: #fff; }
+.btn:hover { background: var(--brand-hover); color: #fff; box-shadow: var(--glow); }
 .btn:active { transform: translateY(1px); }
 .btn svg { width: 1.125em; height: 1.125em; flex-shrink: 0; }
 
@@ -481,29 +522,55 @@ section { padding-block: var(--sp-7); }
 /* --- 6. Cards + content blocks ---------------------------------------- */
 
 .card {
+  position: relative;
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: var(--r);
+  border-radius: var(--r-lg);
   padding: var(--sp-5);
   box-shadow: var(--shadow);
+  transition: box-shadow var(--dur) var(--ease),
+              transform var(--dur) var(--ease),
+              border-color var(--dur) var(--ease);
+}
+/* Very slight top highlight, as if lit from above */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  background: linear-gradient(90deg, transparent, var(--ring), transparent);
+  pointer-events: none;
 }
 .card > :last-child { margin-bottom: 0; }
 .card h3 { margin-bottom: var(--sp-2); }
 .card p { color: var(--text-muted); font-size: var(--fs-sm); }
 
-a.card { text-decoration: none; color: inherit; display: block; transition: box-shadow .15s, border-color .15s, transform .15s; }
-a.card:hover { box-shadow: var(--shadow-lg); border-color: var(--brand); transform: translateY(-2px); color: inherit; }
+a.card { text-decoration: none; color: inherit; display: block; }
+a.card:hover {
+  box-shadow: var(--shadow-lg), var(--glow);
+  border-color: color-mix(in srgb, var(--brand) 45%, var(--border));
+  transform: translateY(-4px);
+  color: inherit;
+}
+a.card .more { transition: gap var(--dur) var(--ease); display: inline-flex; gap: .35em; }
+a.card:hover .more { gap: .7em; }
 a.card .more { color: var(--brand); font-weight: 600; font-size: var(--fs-sm); }
 
 .card-icon {
   display: grid;
   place-items: center;
-  width: 2.75rem; height: 2.75rem;
+  width: 3rem; height: 3rem;
   margin-bottom: var(--sp-4);
-  border-radius: var(--r-sm);
-  background: var(--brand-ink);
+  border-radius: var(--r);
+  background:
+    linear-gradient(150deg, color-mix(in srgb, var(--brand) 14%, transparent), transparent 70%),
+    var(--brand-ink);
+  box-shadow: inset 0 0 0 1px var(--ring);
   color: var(--brand);
+  transition: transform var(--dur) var(--ease);
 }
+a.card:hover .card-icon { transform: scale(1.06) rotate(-2deg); }
 .card-icon svg { width: 1.5rem; height: 1.5rem; }
 
 /* CMYK top rule — small nod to print, purely decorative */
@@ -518,10 +585,36 @@ a.card .more { color: var(--brand); font-weight: 600; font-size: var(--fs-sm); }
 /* --- 7. Hero ----------------------------------------------------------- */
 
 .hero {
-  padding-block: var(--sp-7) var(--sp-7);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: var(--sp-8) var(--sp-8);
   background:
-    radial-gradient(60rem 30rem at 15% -10%, var(--brand-ink), transparent 70%),
+    radial-gradient(48rem 28rem at 12% -18%, color-mix(in srgb, var(--cyan) 13%, transparent), transparent 65%),
+    radial-gradient(42rem 26rem at 92% 8%, color-mix(in srgb, var(--brand) 16%, transparent), transparent 62%),
+    radial-gradient(38rem 30rem at 60% 120%, color-mix(in srgb, var(--magenta) 8%, transparent), transparent 60%),
     var(--bg);
+}
+/* Faint engineering grid, drawn in CSS so it costs no request */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(to right, var(--ring) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--ring) 1px, transparent 1px);
+  background-size: 68px 68px;
+  mask-image: radial-gradient(70% 60% at 50% 0%, #000 20%, transparent 75%);
+  opacity: .7;
+}
+.hero h1 { font-size: var(--fs-4xl); letter-spacing: -0.04em; }
+/* Gradient text on the emphasised span of the headline */
+.hero h1 .accent {
+  background: linear-gradient(120deg, var(--brand), var(--cyan) 90%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
 }
 @media (min-width: 48em) { .hero { padding-block: var(--sp-8) var(--sp-8); } }
 
@@ -541,11 +634,13 @@ a.card .more { color: var(--brand); font-weight: 600; font-size: var(--fs-sm); }
 }
 
 .hero-figure {
-  background: var(--surface);
+  position: relative;
+  background:
+    linear-gradient(165deg, color-mix(in srgb, var(--bg) 92%, var(--brand)), var(--surface));
   border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  padding: var(--sp-5);
-  box-shadow: var(--shadow-lg);
+  border-radius: var(--r-xl);
+  padding: var(--sp-6);
+  box-shadow: var(--shadow-xl);
 }
 
 /* --- 8. Lists ---------------------------------------------------------- */
@@ -869,6 +964,253 @@ textarea { min-height: 8rem; resize: vertical; }
 }
 .social a:hover { color: var(--brand); border-color: var(--brand); }
 .social svg { width: 1.125rem; height: 1.125rem; }
+
+/* --- 17b. Scroll reveal ------------------------------------------------
+   Elements marked [data-reveal] start slightly offset and fade in when
+   scrolled into view. site.js adds .is-in via IntersectionObserver.
+
+   Three safety properties matter here, because the worst outcome of a reveal
+   animation is content that never appears:
+   - The hidden state is scoped to .reveal-ready, which site.js sets ONLY once it
+     has confirmed IntersectionObserver support and that motion is allowed. No
+     JavaScript, no observer, or reduced motion => content is simply visible.
+   - site.js also runs a failsafe timer that reveals everything after 2s, so a
+     silent observer failure cannot leave the page blank.
+   - Under prefers-reduced-motion the offset is dropped entirely rather than
+     merely shortened, so nothing slides.
+   --------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-ready [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity var(--dur-slow) var(--ease-out),
+                transform var(--dur-slow) var(--ease-out);
+  }
+  .reveal-ready [data-reveal].is-in { opacity: 1; transform: none; }
+  /* Stagger children of a revealed group */
+  .reveal-ready [data-reveal] > * { transition: inherit; }
+  .reveal-ready [data-reveal-stagger] > * {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity var(--dur-slow) var(--ease-out),
+                transform var(--dur-slow) var(--ease-out);
+  }
+  .reveal-ready [data-reveal-stagger].is-in > * { opacity: 1; transform: none; }
+  .reveal-ready [data-reveal-stagger].is-in > :nth-child(2) { transition-delay: 60ms; }
+  .reveal-ready [data-reveal-stagger].is-in > :nth-child(3) { transition-delay: 120ms; }
+  .reveal-ready [data-reveal-stagger].is-in > :nth-child(4) { transition-delay: 180ms; }
+  .reveal-ready [data-reveal-stagger].is-in > :nth-child(5) { transition-delay: 240ms; }
+  .reveal-ready [data-reveal-stagger].is-in > :nth-child(6) { transition-delay: 300ms; }
+}
+
+/* --- 17c. Bento / asymmetric sections ---------------------------------
+   Breaks the monotony of identical card rows. Cells opt into spans.
+   --------------------------------------------------------------------- */
+
+.bento {
+  display: grid;
+  gap: var(--sp-4);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 40em)  { .bento { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 64em)  { .bento { grid-template-columns: repeat(6, 1fr); } }
+
+/* Spans only apply on the 6-column layout */
+@media (min-width: 64em) {
+  .bento > .col-2 { grid-column: span 2; }
+  .bento > .col-3 { grid-column: span 3; }
+  .bento > .col-4 { grid-column: span 4; }
+  .bento > .col-6 { grid-column: span 6; }
+  .bento > .row-2 { grid-row: span 2; }
+}
+
+/* A cell that is mostly a photo */
+.bento-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  min-height: 12rem;
+  display: grid;
+}
+.bento-media > img {
+  grid-area: 1 / 1;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.bento-media:hover > img { transform: scale(1.04); }
+.bento-media > figcaption {
+  grid-area: 1 / 1;
+  align-self: end;
+  padding: var(--sp-5) var(--sp-4) var(--sp-4);
+  color: #fff;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  background: linear-gradient(to top, rgb(8 14 22 / 82%), rgb(8 14 22 / 0%));
+}
+
+/* --- 17d. Photo frames + gallery -------------------------------------
+   .frame is the reusable photo container: fixed aspect ratio so images
+   never cause layout shift, and a labelled empty state so the design still
+   reads as intentional before real photos exist.
+   --------------------------------------------------------------------- */
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  aspect-ratio: var(--ar, 4 / 3);
+}
+.frame > img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.frame.ar-square   { --ar: 1 / 1; }
+.frame.ar-portrait { --ar: 3 / 4; }
+.frame.ar-wide     { --ar: 16 / 9; }
+
+/* Empty-state placeholder: diagonal hatch + label, clearly deliberate */
+.frame-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-4);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  background:
+    repeating-linear-gradient(45deg, transparent 0 10px, var(--ring) 10px 20px),
+    var(--surface-2);
+}
+.frame-empty svg { width: 1.75rem; height: 1.75rem; opacity: .55; }
+
+.gallery {
+  display: grid;
+  gap: var(--sp-3);
+  grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
+}
+.gallery > figure { margin: 0; }
+
+/* Each gallery item is a link to the full-size image, so it works with no JS */
+.gallery a {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  aspect-ratio: 4 / 3;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.gallery a:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease-out); }
+.gallery a:hover img { transform: scale(1.05); }
+.gallery figcaption {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  padding-top: var(--sp-2);
+}
+/* Zoom affordance */
+.gallery a::after {
+  content: "";
+  position: absolute;
+  inset: auto var(--sp-2) var(--sp-2) auto;
+  width: 1.75rem; height: 1.75rem;
+  border-radius: var(--r-sm);
+  background: rgb(8 14 22 / 55%) var(--icon-zoom) center / 1rem no-repeat;
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+}
+.gallery a:hover::after, .gallery a:focus-visible::after { opacity: 1; }
+
+:root {
+  --icon-zoom: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2M11 8v6M8 11h6"/></svg>');
+}
+
+/* Gallery groups are <section> elements, which would otherwise inherit the
+   global section padding-block and leave huge gaps between groups. */
+.gallery-group { padding-block: 0; }
+.gallery-group + .gallery-group { margin-top: var(--sp-6); }
+.gallery-group h2 { margin-bottom: var(--sp-4); font-size: var(--fs-xl); }
+
+/* --- 17e. Lightbox ---------------------------------------------------
+   A native <dialog>, so focus trapping, Escape and the backdrop come from
+   the browser rather than from script. Without JavaScript the gallery links
+   simply open the image directly.
+   --------------------------------------------------------------------- */
+
+.lightbox {
+  width: min(96vw, 84rem);
+  max-width: none;
+  max-height: 94dvh;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-lg);
+  background: transparent;
+  overflow: visible;
+}
+.lightbox::backdrop { background: rgb(6 10 16 / 88%); backdrop-filter: blur(3px); }
+.lightbox-inner { display: grid; gap: var(--sp-3); justify-items: center; }
+.lightbox img {
+  max-width: 100%;
+  max-height: 82dvh;
+  width: auto; height: auto;
+  border-radius: var(--r);
+  background: var(--surface-2);
+  box-shadow: var(--shadow-xl);
+}
+.lightbox figcaption {
+  color: #e7edf5;
+  font-size: var(--fs-sm);
+  text-align: center;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 60%);
+}
+.lightbox-bar {
+  position: absolute;
+  top: calc(-1 * var(--sp-6));
+  right: 0;
+  display: flex;
+  gap: var(--sp-2);
+}
+.lightbox button {
+  display: grid;
+  place-items: center;
+  width: 2.5rem; height: 2.5rem;
+  padding: 0;
+  border: 1px solid rgb(255 255 255 / 22%);
+  border-radius: var(--r-sm);
+  background: rgb(255 255 255 / 10%);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color var(--dur) var(--ease);
+}
+.lightbox button:hover { background: rgb(255 255 255 / 22%); }
+.lightbox button svg { width: 1.25rem; height: 1.25rem; }
+.lightbox-nav {
+  position: absolute;
+  inset: 50% 0 auto;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding-inline: var(--sp-2);
+  pointer-events: none;
+}
+.lightbox-nav button { pointer-events: auto; }
+@media (max-width: 40em) {
+  .lightbox-bar { top: calc(-1 * var(--sp-5)); }
+  .lightbox-nav { inset: auto 0 calc(-1 * var(--sp-6)); transform: none; justify-content: center; gap: var(--sp-3); }
+}
 
 /* --- 18. Utilities -----------------------------------------------------
    Small single-purpose classes. These exist because the production CSP sets

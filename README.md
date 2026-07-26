@@ -88,6 +88,7 @@ plus a honeypot field). It needs no JavaScript and no API key.
 ```
 index.html              Home
 about/  brands/  contact/  privacy/  terms/
+gallery/                Photo gallery (markup generated from your photos)
 printer-sales/          New printer sales
 services/               Repair, on-site service, AMC
 products/               Spare parts & consumables
@@ -98,6 +99,9 @@ assets/css/style.css    The entire design system (~1 file, no framework)
 assets/js/site.js       Theme toggle, mobile nav, click-to-load map. All optional.
 assets/icons/           Logo + favicon (SVG) and generated PNG app icons
 assets/images/          Open Graph image
+assets/images/gallery/originals/   <- drop photos here; they publish automatically
+tools/build_gallery.py  Resizes photos + writes gallery markup (authoring tool)
+.github/workflows/      Runs the gallery build on push
 _headers                CSP + security + caching (Netlify / Cloudflare Pages)
 netlify.toml            Netlify config (no build)
 sitemap.xml  robots.txt  manifest.webmanifest  favicon.ico
@@ -106,6 +110,7 @@ docs/                   Config, maintenance, security, a11y, performance
 
 ## Docs
 
+- **[GALLERY.md](docs/GALLERY.md)** — adding photos, captions, and what to photograph
 - **[SITE-CONFIG.md](docs/SITE-CONFIG.md)** — every placeholder and how to change it
 - **[MAINTENANCE.md](docs/MAINTENANCE.md)** — editing content, adding pages/images, gotchas
 - **[SECURITY.md](docs/SECURITY.md)** — CSP explained, headers for every host, checklist
@@ -120,8 +125,12 @@ docs/                   Config, maintenance, security, a11y, performance
   embed is the single exception and is injected only after the visitor clicks
   "Load the map".
 - **Illustration over stock photography.** Inline SVG rather than invented
-  photos of a shop we have not seen. Add real photos when you have them —
-  MAINTENANCE.md has the markup pattern.
+  photos of a shop we have not seen. Drop real photos into
+  `assets/images/gallery/originals/` and they publish themselves — see
+  [GALLERY.md](docs/GALLERY.md).
+- **Motion is decorative and fail-safe.** Sections fade in on scroll, but the
+  hidden state is only ever applied once JavaScript has confirmed it can undo
+  it, plus a 2s failsafe. Content can never be stranded invisible.
 - **No inline styles or inline scripts anywhere**, so the CSP needs no
   `unsafe-inline`. Utility classes at the end of `style.css` exist for this reason.
 - **Dark mode** follows the OS and can be overridden by the header toggle.

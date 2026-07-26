@@ -56,8 +56,11 @@ only.
 
 ## Images
 
-There are currently no photographs, only inline SVG and the generated Open Graph
-image. When you have real photos of the shop, stock or repairs, use this pattern:
+**For gallery photos, don't hand-write markup — see [GALLERY.md](GALLERY.md).**
+Drop files into `assets/images/gallery/originals/`, push, and the resizing plus
+markup is done for you.
+
+For a one-off photo placed directly in a page, use this pattern:
 
 ```html
 <img src="../assets/images/workshop.webp"

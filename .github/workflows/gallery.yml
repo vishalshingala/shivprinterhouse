@@ -1,0 +1,60 @@
+name: Build photo gallery
+
+# Drop photos into assets/images/gallery/originals/, push, and this generates
+# the resized WebP derivatives and the gallery markup, then commits them back.
+# Cloudflare Pages picks up that commit and deploys as usual.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      # Only the inputs. Generated output is excluded so the workflow cannot
+      # retrigger itself in a loop.
+      - 'assets/images/gallery/originals/**'
+      - 'assets/images/gallery/captions.json'
+      - 'tools/build_gallery.py'
+      - '.github/workflows/gallery.yml'
+  # Lets you run it by hand from the Actions tab, e.g. after editing captions.
+  workflow_dispatch:
+
+# If several pushes land together, only finish the newest.
+concurrency:
+  group: gallery-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write        # needed to commit the generated files back
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Pillow
+        run: python -m pip install --quiet --disable-pip-version-check Pillow
+
+      - name: Generate derivatives and gallery markup
+        run: python3 tools/build_gallery.py
+
+      - name: Commit generated files
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add assets/images/gallery gallery/index.html
+
+          if git diff --cached --quiet; then
+            echo "Nothing changed — no commit needed."
+            exit 0
+          fi
+
+          COUNT=$(ls -1 assets/images/gallery/originals 2>/dev/null | wc -l)
+          # [skip ci] is belt-and-braces; the paths filter above already
+          # prevents this commit from retriggering the workflow.
+          git commit -m "Rebuild photo gallery (${COUNT} source photo(s)) [skip ci]"
+          git push
